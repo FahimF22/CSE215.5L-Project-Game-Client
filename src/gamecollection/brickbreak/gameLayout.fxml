@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane fx:id="screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gamecollection.brickbreak.BrickBreakController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#591111" height="400.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+      <Button fx:id="startButton" layoutX="274.0" layoutY="187.0" mnemonicParsing="false" onAction="#startButtonAction" text="Start Game" />
+      <Circle fx:id="ball" fill="WHITE" layoutX="312.0" layoutY="234.0" radius="9.0" stroke="BLACK" strokeType="INSIDE" />
+      <Rectangle fx:id="player" arcHeight="5.0" arcWidth="5.0" fill="#b87300" height="18.0" layoutX="251.0" layoutY="353.0" stroke="BLACK" strokeType="INSIDE" width="122.0" />
+      <Rectangle fx:id="bottomLine" arcHeight="5.0" arcWidth="5.0" fill="#5b1212" height="49.0" layoutX="-1.0" layoutY="372.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" width="600.0" />
+   </children>
+</AnchorPane>
