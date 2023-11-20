@@ -19,13 +19,14 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import javafx.scene.Node;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
  *
  * @author Md. Fahim Fardin
  */
-public class BrickBreakController implements Initializable {
+public class BrickBreakerController implements Initializable {
     
     @FXML
     private AnchorPane screen;
@@ -37,11 +38,18 @@ public class BrickBreakController implements Initializable {
     private Button startButton;
     @FXML
     private Rectangle bottomLine;
+    @FXML
+    private Text playerScore;
+    
     
     Robot robot = new Robot();
     private ArrayList<Rectangle> bricks = new ArrayList<>();
     private double DirX = 1;
     private double DirY = 3;
+    private double ballPosX = 312;
+    private double ballPosY = 234;
+    private int score=0;
+    
     
     Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), new EventHandler<ActionEvent>(){
         @Override
@@ -53,6 +61,7 @@ public class BrickBreakController implements Initializable {
             
             if(bricks.isEmpty()){
                 timeline.stop();
+                startButton.setVisible(true);
             }
             else{
                 bricks.removeIf(brick -> checkCollisionBrick(brick));
@@ -71,6 +80,11 @@ public class BrickBreakController implements Initializable {
     }
     
     public void startGame(){
+        screen.getChildren().remove(playerScore);
+        score=0;
+        playerScore.setText(Integer.toString(0));
+        ball.setLayoutX(ballPosX);
+        ball.setLayoutY(ballPosY);
         createBricks();
         timeline.play();
     }
@@ -140,12 +154,19 @@ public class BrickBreakController implements Initializable {
 
             if (rightBorder || leftBorder) {
                 DirX *= -1;
+                
+                
             }
             if (bottomBorder || topBorder) {
                 DirY *= -1;
+                
             }
             screen.getChildren().remove(brick);
-
+            screen.getChildren().remove(playerScore);
+            score++;
+            playerScore.setText(Integer.toString(score));
+                
+            screen.getChildren().add(playerScore);
             return true;
         }
         return false;
@@ -175,14 +196,7 @@ public class BrickBreakController implements Initializable {
             bricks.forEach(brick -> screen.getChildren().remove(brick));
             bricks.clear();
             startButton.setVisible(true);
-
-            player.setWidth(player.getWidth());
-
-            DirX = 1;
-            DirY = 3;
-
-            ball.setLayoutX(300);
-            ball.setLayoutY(300);
+            
 
             System.out.println("Game over!");
         }
@@ -196,6 +210,4 @@ public class BrickBreakController implements Initializable {
         timeline.setCycleCount(Animation.INDEFINITE);
     }
 }
-
-
 
