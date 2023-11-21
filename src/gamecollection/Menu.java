@@ -104,8 +104,6 @@ public class Menu {
     public void openBreakoutGame() {
         try {
             FXMLLoader gameLayout = new FXMLLoader(getClass().getResource("brickbreak/gameLayout.FXML"));
-            URL url = getClass().getResource("brickbreak/gameLayout.fxml");
-            System.out.println(url);
             Parent root1 = (Parent) gameLayout.load();
             Stage breakoutStage = new Stage();
             breakoutStage.setScene(new Scene(root1));

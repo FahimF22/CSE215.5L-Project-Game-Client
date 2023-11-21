@@ -26,7 +26,7 @@ import javafx.scene.text.Text;
  *
  * @author Md. Fahim Fardin
  */
-public class BrickBreakerController implements Initializable {
+public class BrickBreakController implements Initializable {
     
     @FXML
     private AnchorPane screen;
